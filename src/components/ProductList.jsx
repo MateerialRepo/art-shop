@@ -29,23 +29,23 @@ const ProductList = () => {
   return (
     <>
         <div className='container'>
+            {/* List Products fectched below */}
 
-            <div className='row m-3'>
-                <div className="col-12" >
-                    <h1>ArtShop Products</h1>
-                </div>
-
-                {/* List Products fectched below */}
-
-                <div className="col-12 m-3" >
-                    <div className='row'>
-                        {products.map(product => (
-                            <Product product={product}/>
-                        ))}
+            <div className="col-12 m-3" >
+                <div className="row product">
+                        
+                    {products.map(product => (
+                        <Product 
+                            key={product.id} 
+                            image={product.image_url} 
+                            title={product.title} 
+                            description={product.description} 
+                            price={product.price_display}
+                        />
+                    ))}
                     </div>
-                </div>
-            </div>
-        </div>     
+                    </div>
+                </div> 
     </>
   )
 }
