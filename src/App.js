@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <div className='container'>
         <div className='row m-3'>
-            <div className="col-12" >
+            <div className="col-12 text-center" >
                 <h1>ArtShop Products</h1>
             </div>
         </div>

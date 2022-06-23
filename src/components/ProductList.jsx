@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 import Product from './Product';
 
@@ -8,9 +9,9 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [pageCount, setPageCount] = useState(0);
 
-    const fetchProducts = async () => {
+    const fetchProducts = async (currentPage) => {
         try {
-            const {data} = await axios.get(`https://api.artic.edu/api/v1/products?page=`);
+            const {data} = await axios.get(`https://api.artic.edu/api/v1/products?page=${currentPage}`);
             setPagination(data.pagination);
             setPageCount(pagination.total_pages);
             setProducts(data.data);
@@ -24,7 +25,11 @@ const ProductList = () => {
         fetchProducts();
     }, []);
 
-
+    const handlePageClick = (data) => {
+        console.log(data.selected);
+        fetchProducts(data.selected + 1);
+    }
+    
 
   return (
     <>
@@ -43,9 +48,32 @@ const ProductList = () => {
                             price={product.price_display}
                         />
                     ))}
-                    </div>
-                    </div>
-                </div> 
+                </div>
+            </div>
+
+            <div className='row mt-2 mx-2'>
+                <ReactPaginate 
+                previousLabel={'previous'}
+                nextLabel={'next'}
+                breakLabel={'...'}
+                pageCount={pageCount}
+                marginPagesDisplayed={4}
+                pageRangeDisplayed={4}
+                onPageChange={handlePageClick}
+                containerClassName={'pagination justify-content-center'}
+                pageClassName={'page-item'}
+                pageLinkClassName={'page-link'}
+                previousClassName={'page-item'}
+                previousLinkClassName={'page-link'}
+                nextClassName={'page-item'}
+                nextLinkClassName={'page-link'}
+                breakClassName={'page-item'}
+                breakLinkClassName={'page-link'}
+                activeClassName={'active'}
+
+                />
+            </div>
+        </div> 
     </>
   )
 }

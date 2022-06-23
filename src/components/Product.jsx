@@ -7,7 +7,7 @@ const Product = ({id, image, title, description, price}) => {
     <div className="col-12 col-md-6 col-lg-4 mb-4">
         <div className="card-deck">
             <div className="card shadow-sm" key={id}>
-                <img src={image} alt={title} className="card-img-top"/>
+                <img src={image} alt={title} className="card-img-top" width={400} height={400}/>
 
                 <div className="card-body">
                     <ul class="list-group list-group-flush">
