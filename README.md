@@ -9,6 +9,7 @@ Once it is completed, you can run "npm start" to start the application.
     - Created a component for each product card showing the image, name, and price
     - Created a component to list the products
     - Added pagination to the list of products
+    - Created a development branch and merged it to the master branch afterwards
 
 ## Things I would do with more time
 
